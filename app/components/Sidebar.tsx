@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Box from "./Box";
+import Library from "./Library";
 import SidebarItem from "./SidebarItem";
 import { usePathname } from "next/navigation";
 import { HiHome } from "react-icons/hi";
@@ -41,8 +42,11 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
             ))}
           </div>
         </Box>
-        <Box className="overflow-y-auto h-full">Song Library</Box>
+        <Box className="overflow-y-auto h-full">
+          <Library />
+        </Box>
       </div>
+      <main className="h-full flex-1 overflow-y-auto py-2">{children}</main>
     </div>
   );
 };
