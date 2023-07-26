@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         </div>
         <div className="flex justify-between items-center gap-x-4">
           <>
-            <div>
+            <div className="flex items-center">
               <Button
                 onClick={() => {}}
                 className="bg-transparent text-neutral-300 font-medium">
