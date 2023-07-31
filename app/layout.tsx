@@ -1,11 +1,10 @@
 import SupabaseProvider from "@/providers/SupabaseProvider";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "@/components/Sidebar";
 
 import "./globals.css";
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import UserProvider from "@/providers/UserProvider";
-import { Modal } from "@pankod/refine";
 import ModalProvider from "@/providers/ModalProvider";
 
 const font = Figtree({ subsets: ["latin"] });
