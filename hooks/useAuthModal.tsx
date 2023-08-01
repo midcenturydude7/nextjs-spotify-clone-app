@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 interface AuthModalStore {
-  isOpen: boolean;
+  isOpen: "boolean";
   onOpen: () => void;
   onClose: () => void;
 }
