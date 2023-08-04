@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { toast } from "react-hot-toast";
 
 import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
@@ -32,7 +33,9 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
     router.refresh();
 
     if (error) {
-      console.log(error);
+      toast.error(error.message);
+    } else {
+      toast.success("Logged out successfully!");
     }
   };
   return (
