@@ -5,16 +5,19 @@ import uniqid from "uniqid";
 import { toast } from "react-hot-toast";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useUploadModal from "@/hooks/useUploadModal";
+import { useUser } from "@/hooks/useUser";
+
 import Modal from "./Modal";
 import Input from "./Input";
 import Button from "./Button";
 
-import { useUser } from "@/hooks/useUser";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const UploadModal = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const uploadModal = useUploadModal();
   const { user } = useUser();
+  const supabaseClient = useSupabaseClient();
 
   const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {
@@ -46,6 +49,33 @@ const UploadModal = () => {
       }
 
       const uniqueID = uniqid;
+
+      // Upload song
+      const { data: songData, error: songError } = await supabaseClient.storage
+        .from("songs")
+        .upload(`song-${values.title}-${uniqueID}`, songFile, {
+          cacheControl: "3600",
+          upsert: false,
+        });
+
+      if (songError) {
+        setIsLoading(false);
+        return toast.error("Oops! Failure to upload song.");
+      }
+
+      // Upload image
+      const { data: imageData, error: imageError } =
+        await supabaseClient.storage
+          .from("images")
+          .upload(`image-${values.title}-${uniqueID}`, imageFile, {
+            cacheControl: "3600",
+            upsert: false,
+          });
+
+      if (imageError) {
+        setIsLoading(false);
+        return toast.error("Oops! Failure to upload image.");
+      }
     } catch (error) {
       toast.error("Oops! Something went wrong!");
     } finally {
