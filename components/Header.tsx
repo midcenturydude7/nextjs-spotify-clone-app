@@ -88,8 +88,10 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         </div>
         <div className="flex justify-between items-center gap-x-4">
           {user ? (
-            <div className="flex gap-x-4 items-center">
-              <Button onClick={handleLogout} className="bg-white px-6 py-2">
+            <div className="flex items-center gap-x-4">
+              <Button
+                onClick={handleLogout}
+                className="bg-white px-6 py-2 whitespace-nowrap">
                 Log out
               </Button>
               <Button
@@ -99,20 +101,16 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
               </Button>
             </div>
           ) : (
-            <>
-              <div className="flex items-center gap-x-4">
-                <Button
-                  onClick={authModal.onOpen}
-                  className="bg-transparent text-neutral-300 font-medium whitespace-nowrap">
-                  Sign up
-                </Button>
-                <Button
-                  onClick={authModal.onOpen}
-                  className="bg-white px-6 py-2">
-                  Log in
-                </Button>
-              </div>
-            </>
+            <div className="flex items-center gap-x-4">
+              <Button
+                onClick={authModal.onOpen}
+                className="bg-transparent text-neutral-300 font-medium whitespace-nowrap">
+                Sign up
+              </Button>
+              <Button onClick={authModal.onOpen} className="bg-white px-6 py-2">
+                Log in
+              </Button>
+            </div>
           )}
         </div>
       </div>
