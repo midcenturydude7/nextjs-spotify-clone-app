@@ -2,6 +2,7 @@
 import React from "react";
 
 import AuthModal from "@/components/AuthModal";
+import UploadModal from "@/components/UploadModal";
 
 const ModelProvider = () => {
   const [isMounted, setIsMounted] = React.useState(false);
@@ -17,6 +18,7 @@ const ModelProvider = () => {
   return (
     <>
       <AuthModal />
+      <UploadModal />
     </>
   );
 };
