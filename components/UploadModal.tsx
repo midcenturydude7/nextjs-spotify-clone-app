@@ -16,9 +16,10 @@ import { useRouter } from "next/navigation";
 
 const UploadModal = () => {
   const [isLoading, setIsLoading] = React.useState(false);
+
   const uploadModal = useUploadModal();
-  const { user } = useUser();
   const supabaseClient = useSupabaseClient();
+  const { user } = useUser();
   const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm<FieldValues>({
@@ -50,7 +51,7 @@ const UploadModal = () => {
         return;
       }
 
-      const uniqueID = uniqid;
+      const uniqueID = uniqid();
 
       // Upload song
       const { data: songData, error: songError } = await supabaseClient.storage
