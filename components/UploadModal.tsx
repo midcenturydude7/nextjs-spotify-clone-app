@@ -12,12 +12,14 @@ import Input from "./Input";
 import Button from "./Button";
 
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useRouter } from "next/navigation";
 
 const UploadModal = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const uploadModal = useUploadModal();
   const { user } = useUser();
   const supabaseClient = useSupabaseClient();
+  const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {
@@ -76,6 +78,27 @@ const UploadModal = () => {
         setIsLoading(false);
         return toast.error("Oops! Failure to upload image.");
       }
+
+      const { error: subabaseError } = await supabaseClient
+        .from("songs")
+        .insert({
+          user_id: user.id,
+          title: values.title,
+          author: values.author,
+          image_path: imageData.path,
+          song_path: songData.path,
+        });
+
+      if (subabaseError) {
+        setIsLoading(false);
+        return toast.error(subabaseError.message);
+      }
+
+      router.refresh();
+      setIsLoading(false);
+      toast.success("Song uploaded successfully!");
+      reset();
+      uploadModal.onClose();
     } catch (error) {
       toast.error("Oops! Something went wrong!");
     } finally {
