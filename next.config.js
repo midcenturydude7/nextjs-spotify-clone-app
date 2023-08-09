@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfi = {
   images: {
     domains: ["oerygdnxhmtwvalobhpb.supabase.co"],
   },
