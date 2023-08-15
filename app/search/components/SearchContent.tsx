@@ -29,4 +29,4 @@ const SearchContent: React.FC<SearchContentProps> = ({ songs }) => {
   );
 };
 
-export default SearchContent;
+export default SearchConten;
