@@ -1,9 +1,11 @@
-import SupabaseProvider from "@/providers/SupabaseProvider";
-import Sidebar from "@/components/Sidebar";
-
 import "./globals.css";
-import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
+
+import Sidebar from "@/components/Sidebar";
+import Player from "@/components/Player";
+
+import SupabaseProvider from "@/providers/SupabaseProvider";
+
 import UserProvider from "@/providers/UserProvider";
 import ModalProvider from "@/providers/ModalProvider";
 import ToastProvider from "@/providers/ToasterProvider";
@@ -11,7 +13,7 @@ import getSongsByUserId from "@/actions/getSongsByUserId";
 
 const font = Figtree({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Next.js Spotify Clone",
   description:
     "Built with React, Stripe, Supabase, PostgreSQL, Tailwing, and Vercel",
@@ -33,6 +35,7 @@ export default async function RootLayout({
           <UserProvider>
             <ModalProvider />
             <Sidebar songs={userSongs}>{children}</Sidebar>
+            <Player />
           </UserProvider>
         </SupabaseProvider>
       </body>
