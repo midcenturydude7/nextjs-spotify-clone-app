@@ -1,15 +1,17 @@
 "use client";
 import React from "react";
-import Box from "./Box";
+
 import Library from "./Library";
 import SidebarItem from "./SidebarItem";
-import { usePathname } from "next/navigation";
-import { HiHome } from "react-icons/hi";
-import { BiSearch } from "react-icons/bi";
-import { Song } from "../types";
+
 import usePlayer from "@/hooks/usePlayer";
+import Box from "./Box";
+import { usePathname } from "next/navigation";
+import { Song } from "../types";
 import { twMerge } from "tailwind-merge";
 
+import { HiHome } from "react-icons/hi";
+import { BiSearch } from "react-icons/bi";
 interface SidebarProps {
   children: React.ReactNode;
   songs: Song[];

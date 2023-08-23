@@ -2,14 +2,14 @@
 import React from "react";
 import MediaItem from "./MediaItem";
 
+import useOnPlay from "@/hooks/useOnPlay";
+import useUploadModal from "@/hooks/useUploadModal";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
-import useUploadModal from "@/hooks/useUploadModal";
 import { Song } from "@/types";
 
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
-import useOnPlay from "@/hooks/useOnPlay";
 
 interface LibraryProps {
   songs: Song[];
