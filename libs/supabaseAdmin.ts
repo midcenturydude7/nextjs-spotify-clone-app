@@ -91,3 +91,19 @@ const createOrRetrieveACustomer = async ({
 
   return data.stripe_customer_id;
 };
+
+const copyBillingDetailsToCustomer = async (
+  uuid: string,
+  payment_method: Stripe.PaymentMethod
+) => {
+  const customer = payment_method.customer as string;
+  const { name, phone, address } = payment_method.billing_details;
+  if (!name || !phone || !address) return;
+
+  // @ts-ignore
+  await stripe.customers.update(customer, {
+    name,
+    phone,
+    address,
+  });
+};
