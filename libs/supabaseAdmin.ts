@@ -104,6 +104,6 @@ const copyBillingDetailsToCustomer = async (
   await stripe.customers.update(customer, {
     name,
     phone,
-    address,
+    // address,
   });
 };
