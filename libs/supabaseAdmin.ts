@@ -102,11 +102,7 @@ const copyBillingDetailsToCustomer = async (
   if (!name || !phone || !address) return;
 
   // @ts-ignore
-  await stripe.customers.update(customer, {
-    name,
-    phone,
-    address,
-  });
+  await stripe.customers.update(customer, { name, phone, address });
   const { error } = await supabaseAdmin
     .from("users")
     .update({
@@ -114,10 +110,7 @@ const copyBillingDetailsToCustomer = async (
       payment_method: { ...payment_method[payment_method.type] },
     })
     .eq("id", uuid);
-
-  if (error) {
-    throw error;
-  }
+  if (error) throw error;
 };
 
 const manageSubscriptionStatusChange = async (
