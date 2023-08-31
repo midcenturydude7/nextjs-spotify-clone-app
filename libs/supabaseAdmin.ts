@@ -191,5 +191,5 @@ export {
   upsertProductRecord,
   upsertPriceRecord,
   createOrRetrieveCustomer,
-  manageSubscriptionStatusChange,
+  manageSubscriptionStatusChang,
 };
