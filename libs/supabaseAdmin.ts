@@ -181,7 +181,7 @@ const manageSubscriptionStatusChange = async (
 
   if (createAction && subscription.default_payment_method && uuid) {
     await copyBillingDetailsToCustomer(
-      uud,
+      uuid,
       subscription.default_payment_method as Stripe.PaymentMethod
     );
   }
