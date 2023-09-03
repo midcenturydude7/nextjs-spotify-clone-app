@@ -116,7 +116,7 @@ const copyBillingDetailsToCustomer = async (
 const manageSubscriptionStatusChange = async (
   subscriptionId: string,
   customerId: string,
-  createAction: false
+  createAction = false
 ) => {
   const { data: customerData, error: noCustomerError } = await supabaseAdmin
     .from("customers")
