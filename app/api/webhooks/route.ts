@@ -69,7 +69,7 @@ export async function POST(request: Request) {
           }
           break;
         default:
-          throw new Error("Unhandled relevant event");
+          throw new Error("Unhandled relevant event!");
       }
     } catch (error) {
       console.log(error);
